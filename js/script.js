@@ -182,6 +182,9 @@ async function initReservationPage() {
     const carUnavailableMessageDiv = $('#car-unavailable-message'); // Corrected ID from HTML
     const carInfoSection = $('#car-info-section');
     const reservationFormSection = $('#reservation-form-section');
+    
+    // Disable submit button by default
+    $('#submit-reservation').prop('disabled', true).addClass('opacity-50 cursor-not-allowed');
 
     // Hide all conditional sections initially to prevent flash of incorrect content
     noCarSelectedDiv.addClass('hidden');
@@ -1031,9 +1034,9 @@ function updateSubmitButton() {
         validateDays(days);
     
     if (isValid) {
-        $('#submit-button').prop('disabled', false);
+        $('#submit-reservation').prop('disabled', false).removeClass('opacity-50 cursor-not-allowed');
     } else {
-        $('#submit-button').prop('disabled', true);
+        $('#submit-reservation').prop('disabled', true).addClass('opacity-50 cursor-not-allowed');
     }
 }
 
