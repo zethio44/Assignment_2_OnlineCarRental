@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpeedyWheels Car Rental</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="js/script.js" defer></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#10b981',
+                        dark: '#1e3a8a',
+                        light: '#f3f4f6'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 font-sans flex flex-col min-h-screen">
+    <header class="bg-white py-4 shadow-sm">
+        <div class="container mx-auto px-4 py-2 relative">
+            <!-- Flex layout for better responsive behavior -->
+            <div class="flex flex-wrap items-center justify-between">
+                <!-- Logo area (left aligned) -->
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-3">
+                        <img src="images/logo.png" alt="SpeedyWheels Logo" class="h-20 w-auto">
+                        <span class="text-2xl font-bold text-primary">SpeedyWheels</span>
+                    </a>
+                </div>
+                
+                <!-- Modern Search bar (center column) -->
+                <div class="flex-grow mx-4 max-w-md my-2 sm:my-0 order-3 sm:order-2 w-full sm:w-auto">
+                    <div class="flex flex-col w-full">
+                        <!-- Modern integrated search bar with filters -->
+                        <div class="flex flex-wrap rounded-xl overflow-hidden shadow-md bg-white ring-1 ring-gray-200 hover:ring-primary transition-all duration-300">
+                            <!-- Search input with icon -->
+                            <div class="relative flex-1 min-w-[140px]">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <svg class="h-4 w-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                    </svg>
+                                </div>
+                                <input type="text" id="search-input" placeholder="Search models, brands..." 
+                                    class="w-full h-10 pl-10 pr-3 py-2 bg-transparent focus:outline-none focus:ring-0 text-sm" autocomplete="off">
+                                <div id="search-suggestions-container" 
+                                    class="absolute z-20 w-full bg-white rounded-lg shadow-xl mt-1 hidden max-h-60 overflow-y-auto border border-gray-100">
+                                    <!-- Suggestions populated by JavaScript -->
+                                </div>
+                            </div>
+                            
+                            <!-- Modern Type filter -->
+                            <div class="relative border-l border-gray-100">
+                                <select id="header-type-filter" 
+                                    class="h-10 pl-3 pr-8 appearance-none bg-transparent text-xs font-medium text-gray-500 focus:outline-none cursor-pointer hover:bg-gray-50 transition-colors">
+                                    <option value="">TYPE</option>
+                                    <!-- Options populated by JavaScript -->
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-400">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            
+                            <!-- Modern Brand filter -->
+                            <div class="relative border-l border-gray-100">
+                                <select id="header-brand-filter" 
+                                    class="h-10 pl-3 pr-8 appearance-none bg-transparent text-xs font-medium text-gray-500 focus:outline-none cursor-pointer hover:bg-gray-50 transition-colors">
+                                    <option value="">BRAND</option>
+                                    <!-- Options populated by JavaScript -->
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-400">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            
+                            <!-- Modern Search button - moved to right -->
+                            <button id="search-button" 
+                                class="bg-primary text-white px-5 font-medium text-xs tracking-wider hover:bg-blue-600 active:bg-blue-700 transition-colors ml-auto">
+                                SEARCH
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Reservation icon (right aligned) -->
+                <div class="order-2 sm:order-3">
+                    <a href="reservation.html" class="flex items-center space-x-1 text-primary hover:text-blue-700 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <span class="font-medium">Reservation</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container mx-auto px-4 py-8 flex-grow">
+
+
+        <!-- Filter box section removed as requested -->
+
+        <section>
+            <h2 id="cars-heading" class="text-2xl font-bold text-gray-800 mb-6">All Cars</h2>
+            <div id="cars-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Cars will be dynamically populated here -->
+            </div>
+        </section>
+    </main>
+    
+    <script src="js/script.js"></script>
+</body>
+</html>
