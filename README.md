@@ -1,4 +1,4 @@
-# SpeedyWheels Car Rental Website
+# 32516 Assignment 2 - Car Rental Website by Tanut Pue-on 25677093
 
 A fully functional car rental website with rich interactive features enabled by AJAX. This website allows users to browse, search, filter, and rent cars online.
 
